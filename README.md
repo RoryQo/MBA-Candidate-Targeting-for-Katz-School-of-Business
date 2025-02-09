@@ -110,10 +110,36 @@ To assess gender bias, the model predictions were examined based on gender. We s
 1. Grouped the predictions by **gender** and compared the likelihood of each gender being predicted to pursue an MBA.
 2. Calculated the **Disparate Impact (DI) Ratio**, which compares the predicted likelihood for women versus men. A DI ratio near 1 indicates no gender bias.
 
+```
+# Example: Gender bias assessment
+# Calculate the probability for each gender
+gender_probs = model.predict_proba(X_test)
+
+# Extract probabilities for women and men
+female_probs = gender_probs[y_test == 1, 1]  # Assuming 1 is female in the dataset
+male_probs = gender_probs[y_test == 0, 1]    # Assuming 0 is male
+
+# Disparate Impact Ratio (DI)
+di_ratio = female_probs.mean() / male_probs.mean()
+print(f'Disparate Impact Ratio: {di_ratio}')
+```
+
 ## Results
 
 ### Model Performance
 - **XGBoost** provided the most robust predictions with an overall accuracy of **63%**. The recall for predicting students who would **not** pursue an MBA was **0.43**, indicating that the model, while successful at predicting those who would pursue an MBA, struggled more with identifying those who would not.
+
+  **Classification Report**
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.69      | 0.43   | 0.53     | 1171    |
+| 1     | 0.59      | 0.81   | 0.69     | 1192    |
+|       |           |        |          |         |
+| **Accuracy**    |           |        | 0.63     | 2363    |
+| **Macro avg**   | 0.64      | 0.62   | 0.61     | 2363    |
+| **Weighted avg**| 0.64      | 0.63   | 0.61     | 2363    |
+
 
 #### Feature Importance:
 The model highlighted several key features that influenced a graduate's likelihood to pursue an MBA:
@@ -128,19 +154,16 @@ On the other hand, features like **gender**, **online versus on-campus MBA prefe
 - The **DI Ratio** was approximately **1**, meaning that the model predicted both **men** and **women** equally (approximately **73%** for both genders). This indicates that there was no significant gender bias in the model's predictions.
 - Gender did not feature prominently in the list of **most important predictors**, reinforcing that the model is not inherently biased towards either gender.
 
-```
-# Example: Gender bias assessment
-# Calculate the probability for each gender
-gender_probs = model.predict_proba(X_test)
+**Predicted MBA Pursuit Rates by Gender (%):**
 
-# Extract probabilities for women and men
-female_probs = gender_probs[y_test == 1, 1]  # Assuming 1 is female in the dataset
-male_probs = gender_probs[y_test == 0, 1]    # Assuming 0 is male
+| Gender | Predicted MBA Pursuit Rate |
+|--------|----------------------------|
+| Female | 0.729673                   |
+| Male   | 0.728601                   |
+| Other  | 0.768421                   |
 
-# Disparate Impact Ratio (DI)
-di_ratio = female_probs.mean() / male_probs.mean()
-print(f'Disparate Impact Ratio: {di_ratio}')
-```
+**Disparate Impact Ratio**: 1.00
+
 ### Considerations for Model Deployment:
 - The **over-prediction of MBA pursuers** by the model raises concerns about recruitment efforts. If resources (marketing campaigns, recruitment outreach) are heavily targeted at individuals predicted to pursue an MBA, there is a risk of wasted resources on individuals who do not follow through.
 - It is crucial to consider the **cost-benefit** of targeting over-predicted MBA candidates, as it can lead to inefficiency and unnecessary expenses in the recruitment process.
