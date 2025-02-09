@@ -87,6 +87,11 @@ XGBoost, a gradient-boosting algorithm that builds an ensemble of decision trees
 ### Cross-Validation:
 To ensure model generalizability, **5-fold cross-validation** was used. This technique splits the dataset into five subsets and trains/test the model on each fold to minimize overfitting and to get a reliable estimate of model performance.
 
+```
+# Perform 5-fold cross-validation
+cv_scores = cross_val_score(model, X, y, cv=5)
+```
+
 ### Evaluation Metrics:
 While **accuracy** is often a common metric for evaluating models, **accuracy alone is not the best metric in this case** due to the **imbalanced nature of the dataset**. In our dataset, the number of students who choose to pursue an MBA is much larger than those who do not. If the model predicts "Pursue MBA" for all students, it would still achieve a high accuracy because the majority class is "Pursue MBA." This would not be a meaningful result, as the model wouldn't be effectively identifying those who are likely to pursue an MBA.
 
@@ -149,6 +154,15 @@ The model highlighted several key features that influenced a graduate's likeliho
 4. **Career goals**: Aspirations for career advancement or entrepreneurship were strong motivators for pursuing further education.
 
 On the other hand, features like **gender**, **online versus on-campus MBA preference**, and **academic performance metrics** (e.g., GRE/GMAT scores, GPA) were less influential in the model's predictions.
+
+<div style="display: flex; justify-content: space-between;">
+
+  <img src="https://github.com/RoryQo/MBA-Candidate-Targeting-for-Katz-School-of-Business/blob/main/Visualizations/ConfusionMatrix.jpg" width="45%" />
+  <img src="https://github.com/RoryQo/MBA-Candidate-Targeting-for-Katz-School-of-Business/blob/main/Visualizations/Feature%20Importance.jpg" width="50%" />
+  
+
+</div>
+
 
 ### Gender Bias Assessment:
 - The **DI Ratio** was approximately **1**, meaning that the model predicted both **men** and **women** equally (approximately **73%** for both genders). This indicates that there was no significant gender bias in the model's predictions.
