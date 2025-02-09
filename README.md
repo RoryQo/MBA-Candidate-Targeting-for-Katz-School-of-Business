@@ -57,6 +57,10 @@ The dataset used in this analysis includes both **categorical** and **numerical*
 - **Uniform Distribution**: The numerical features like age and years of work experience follow a **uniform distribution**, meaning that values are spread evenly across a range. While this can make it difficult for models to detect strong patterns, it also means that data points are independent of each other.
 - **Imbalanced Gender Distribution**: The dataset contains more male graduates than female graduates, and significantly fewer observations for other gender categories. This imbalance introduces challenges in model training, as it could lead to biased predictions if not properly handled.
 
+
+![Distributions](https://github.com/RoryQo/MBA-Candidate-Targeting-for-Katz-School-of-Business/blob/main/Visualizations/Distributions.jpg)
+
+
 ### Data Preprocessing:
 - The dataset did not contain any missing values, eliminating the need for imputation techniques.
 - Categorical variables (such as gender and academic background) were **one-hot encoded** using the `get_dummies` function, ensuring that the data could be interpreted by machine learning models.
@@ -212,12 +216,8 @@ print("Will pursue MBA:" , "Yes" if prediction[0] == 1 else "No")
 - **scikit-learn**: For data preprocessing, model building, and evaluation.
 - **Pandas** and **NumPy**: For data manipulation.
 - **Matplotlib** and **Seaborn**: For data visualization.
-
-## Acknowledgments
-
 - **XGBoost** for its gradient boosting framework.
-- **scikit-learn** for machine learning algorithms.
-- **Pandas** and **NumPy** for efficient data manipulation and handling.
+- **NumPy** for efficient data manipulation and handling.
 - The dataset, which provided the foundation for this analysis.
 
 Feel free to explore and contribute to the project. Feedback and suggestions for improvement are always welcome!
