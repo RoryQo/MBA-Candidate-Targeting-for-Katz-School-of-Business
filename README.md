@@ -56,6 +56,7 @@ The dataset used in this analysis includes both **categorical** and **numerical*
 ### Key Observations:
 - **Uniform Distribution**: The numerical features like age and years of work experience follow a **uniform distribution**, meaning that values are spread evenly across a range. While this can make it difficult for models to detect strong patterns, it also means that data features are mostly independent of each other.
 - **Imbalanced Gender Distribution**: The dataset contains more male graduates than female graduates, and significantly fewer observations for other gender categories. This imbalance introduces challenges in model training, as it could lead to biased predictions if not properly handled.
+- **Imbalanced MBA Decisions**: The data set contains significantly more candidates who chose to pursue an MBA than those who didn't. This imbalance in the data can make it more difficult to predict those who will not pursue an MBA, leading to an imbalance in prediction results.
 
 
 ![Distributions](https://github.com/RoryQo/MBA-Candidate-Targeting-for-Katz-School-of-Business/blob/main/Visualizations/Distributions.jpg)
