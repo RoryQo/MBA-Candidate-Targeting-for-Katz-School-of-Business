@@ -1,5 +1,5 @@
 <h1 align="center">MBA Candidate Targeting for Katz School of Business</h1>
-
+ 
 <div>
   <table align="center">
     <tr>
